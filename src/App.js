@@ -1,26 +1,46 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from 'react-bootstrap/Navbar';
+import Main from './components/main';
+import Createplayer from './components/createplayer';
+import Readteam from './components/readteam';
+import Nav from 'react-bootstrap/Nav';
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 
-function App() {
+
+
+
+class App extends React.Component {
+
+render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+<BrowserRouter>
+        <div className="App">
+          <Navbar bg="primary" variant="dark">
+            <Nav className="mr-auto">
+             
+              <Nav.Link href="/main">Main</Nav.Link>
+              <Nav.Link href="/createplayer">Createplayer</Nav.Link>
+              <Nav.Link href="/readteam">Your Team</Nav.Link>
+
+
+          </Nav>
+        </Navbar>
+        <Switch>
+        
+        <Route path="/Main" component={Main} />
+        <Route path="/createplayer" component={Createplayer} />
+        <Route path="/readteam" component={Readteam} />
+
+        </Switch>
+        </div>
+        </BrowserRouter>
+
+        );
+  }
 }
 
 export default App;
